@@ -1,1 +1,1 @@
-# adrictech-js-algoritm-
+# adrictech-js-algoritm
