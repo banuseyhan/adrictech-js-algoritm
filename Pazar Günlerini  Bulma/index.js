@@ -4,7 +4,7 @@ function getSundayOfCurrentWeek() {
   const last = first + 6;
 
   const monday = new Date(today.setDate(first));
-  console.log(monday); // pazartesi hangi günr denk geliyor??
+  console.log(monday); // pazartesi hangi güne denk geliyor??
 
   const sunday = new Date(today.setDate(last));
 
