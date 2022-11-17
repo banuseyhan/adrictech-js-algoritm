@@ -1,29 +1,26 @@
-const kalinharfsayisi = 0;
-const inceharfsayisi = 0;
-function myFunction() {
-  const kelime = String;
-  const harfler = Array.from(kelime);
-  harfler.forEach(function (x) {
-    const kalın = ["a", "ı", "o", "u"];
-    const ince = ["e", "i", "ö", "ü"];
-    kalın.forEach(
-      function (a) {
-        if (x == a) {
-          kalinharfsayisi += 1;
-        }
-      },
-      ince.forEach(function (a) {
-        if (x == a) {
-          inceharfsayisi += 1;
-        }
-      })
-    );
-  });
-  if (inceharfsayisi > 0 && kalinharfsayisi > 0) {
-    alert("büyük ünlü uyumuna uyulmamıştır");
-  } else if (inceharfsayisi > 0 && kalinharfsayisi == 0) {
-    alert("büyük ünlü uyumuna uyulmuştur");
-  } else if (inceharfsayisi == 0 && kalinharfsayisi > 0) {
-    alert("büyük ünlü uyumuna uyulmuştur");
+// Başlangıçta sert veya yumuşak harf yokmuş gibi düşünürüz
+// Ardından, hardVowels ve softVowels doğrulanabilirleri ile kelimenin her harfini kontrol ediyoruz
+// Döngüden sonra, 'isHardLetter' ve 'isSoftLetter doğru ise dönüş yanlış olur
+// Çünkü kurala göre kelimede sert ve yumuşak ünlüler yoktur
+// yalnızca bir doğrulanabilir yanlışsa, sonuç doğru olur
+// Çünkü bu, kelimenin yalnızca bir sesli harf öğesi olduğu anlamına gelir.
+
+const isHasMajorVowelHarmony = word => {
+  const hardVowels = "aıou";
+  const softVowels = "eiöü";
+
+  let isHardLetter = false;
+  let isSoftLetter = false;
+  for (var i = 0; i < word.length; i++) {
+    if (hardVowels.indexOf(word[i]) !== -1) {
+      isHardLetter = true;
+    }
+    if (softVowels.indexOf(word[i]) !== -1) {
+      isSoftLetter = true;
+    }
   }
-}
+  if (isHardLetter && isSoftLetter) return false;
+  else if (isHardLetter || isSoftLetter) return true;
+};
+
+export default isHasMajorVowelHarmony;
