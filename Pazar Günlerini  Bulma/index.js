@@ -54,9 +54,7 @@ function findSundays() {
         sundayDate -= REGULAR_DAYS_IN_YEAR[key];
       }
       
-      // +key + 1 is to get the correct month 
-      // since I subtract the days of month before I increase the month
-      // it is same for the year on 12th month
+   
       if (sundayDate === 1 && +key < 12) {
         sundays.push(`1/${+key + 1}/${year}`);
       } else if (sundayDate === 1 && +key === 12) {
