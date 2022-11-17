@@ -1,9 +1,4 @@
-// Başlangıçta sert veya yumuşak harf yokmuş gibi düşünürüz
-// Ardından, hardVowels ve softVowels doğrulanabilirleri ile kelimenin her harfini kontrol ediyoruz
-// Döngüden sonra, 'isHardLetter' ve 'isSoftLetter doğru ise dönüş yanlış olur
-// Çünkü kurala göre kelimede sert ve yumuşak ünlüler yoktur
-// yalnızca bir doğrulanabilir yanlışsa, sonuç doğru olur
-// Çünkü bu, kelimenin yalnızca bir sesli harf öğesi olduğu anlamına gelir.
+
 
 const isHasMajorVowelHarmony = word => {
   const hardVowels = "aıou";
