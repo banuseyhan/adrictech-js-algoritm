@@ -1,15 +1,71 @@
-function getSundayOfCurrentWeek() {
-  const date1  = "01.01.1990"
-  const date2 = "31.12.2000"
-  const today = new Date();
-  const first = date2 - date1
-  const last = first + 6;
+function findSundays() {
+  const sundays = [];
 
-  const monday = "01.01.1900"
+  const WEEK_DAYS = 7;
+  const REGULAR_DAYS_IN_YEAR = {
+    '1': 31,
+    '2': 28,
+    '3': 31,
+    '4': 30,
+    '5': 31,
+    '6': 30,
+    '7': 31,
+    '8': 31,
+    '9': 30,
+    '10': 31,
+    '11': 30,
+    '12': 31,
+  };
 
-  const sunday = new Date(today.setDate(last));
+  const LEAP_YEAR = {
+    '1': 31,
+    '2': 29,
+    '3': 31,
+    '4': 30,
+    '5': 31,
+    '6': 30,
+    '7': 31,
+    '8': 31,
+    '9': 30,
+    '10': 31,
+    '11': 30,
+    '12': 31,
+  }
 
-  return sunday;
+  let year = 1900;
+  // this is because 7.1.1900 is sunday
+  let sundayDate = 7;
+
+  while (year <= 2000) {
+    for (const key in REGULAR_DAYS_IN_YEAR) {
+      if (year % 4 === 0 && year !== 1900) {
+        // februaries are 29 days
+        while (sundayDate < LEAP_YEAR[key]) {
+          sundayDate += WEEK_DAYS;
+        }
+
+        sundayDate -= LEAP_YEAR[key];
+      } else {
+        // februaries are 28 days
+        while (sundayDate < REGULAR_DAYS_IN_YEAR[key]) {
+          sundayDate += WEEK_DAYS;
+        }
+
+        sundayDate -= REGULAR_DAYS_IN_YEAR[key];
+      }
+      
+      // +key + 1 is to get the correct month 
+      // since I subtract the days of month before I increase the month
+      // it is same for the year on 12th month
+      if (sundayDate === 1 && +key < 12) {
+        sundays.push(`1/${+key + 1}/${year}`);
+      } else if (sundayDate === 1 && +key === 12) {
+        sundays.push(`1/1/${year + 1}`);
+      }
+    }
+    
+    year++;
+  }
+
+  return sundays;
 }
-
-console.log(getSundayOfCurrentWeek());
