@@ -71,3 +71,4 @@ function findSundays() {
 
   return sundays;
 }
+//while içinde for döngüsü çok iyi olmadı ama başka türlü nasıl yapılacağını bulamadım.
